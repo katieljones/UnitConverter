@@ -8,6 +8,11 @@ import Constants from 'expo-constants'
 const measures = convert().measures()
 const mainColor = '#052F5F'
 const MeasureView = ({ measure }) => <Text> {measure}</Text>
+
+function unCamelCase(value) {
+  return value.replace(/([A-z])/g, ' $1')
+}
+
 export default function App() {
   const [index, setIndex ] = useState(0)
   const [routes] = useState(measures.map((m) => ({key: m,title: m})))
@@ -17,6 +22,7 @@ export default function App() {
 
   return (
     <View style={[styles.scene, {marginTop: Constants.statusBarHeight }]}>
+      <Text style={styles.title}>Unit converter</Text>
       <TabView
       navigationState={{ index, routes }}
       renderScene={renderScene}
@@ -35,5 +41,13 @@ export default function App() {
 const styles = StyleSheet.create({
   scene: {
     flex: 1,
+  },
+  title: {
+    padding: 15,
+    fontWeight: 'bold',
+    color: mainColor,
+    fontSize: 20,
+    textAlign: 'center',
+    textTransform: 'uppercase',
   },
 });
