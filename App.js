@@ -5,6 +5,7 @@ import { TabView, TabBar } from 'react-native-tab-view'
 import { Picker } from '@react-native-community/picker'
 import convert from 'convert-units'
 import Constants from 'expo-constants'
+import { SimpleLineIcons } from '@expo/vector-icons'
 
 
 const measures = convert().measures()
@@ -37,10 +38,17 @@ useEffect(() => {
         <Picker.Item label={unit} value={unit} key={i} />
       ))}
       </Picker>
+
       <View style={styles.column}>
       <TextInput style={styles.input} value={value} onChangeText={setValue} keyboardType="numeric" />
       </View>
       </View>
+      <SimpleLineIcons
+      name="arrow-down-circle"
+      size={40}
+      color={mainColor}
+      style={{ alignSelf: 'center'}}
+      />
       <View style={styles.row}>
       <Picker
       style={styles.column}
